@@ -49,4 +49,10 @@
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
+
+  /* Light scrollbar for light-bg sections (optional — applies globally) */
+  /* Smooth scroll-mt for sections with the fixed navbar */
+  .scroll-mt-20 {
+    scroll-margin-top: 5rem;
+  }
 }
