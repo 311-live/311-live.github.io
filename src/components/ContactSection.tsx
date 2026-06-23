@@ -30,7 +30,7 @@ export default function ContactSection() {
     e.preventDefault()
 
     if (!SITE.contact.formEndpoint) {
-      const subject = encodeURIComponent(`311-live inquiry — ${form.name}`)
+      const subject = encodeURIComponent(`311-live inquiry: ${form.name}`)
       const body = encodeURIComponent(
         `Name: ${form.name}\nOrganization: ${form.org}\nEmail: ${form.email}\n\n${form.message}`,
       )
@@ -179,7 +179,7 @@ export default function ContactSection() {
                 <textarea
                   id="message" name="message" required rows={5}
                   value={form.message} onChange={handleChange}
-                  placeholder="Tell us about your interest — pilot exploration, research collaboration, or demo access."
+                  placeholder="Tell us about your interest: pilot exploration, research collaboration, or demo access."
                   className={[inputClass, 'resize-none'].join(' ')}
                 />
               </div>

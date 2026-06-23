@@ -2,6 +2,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
+import HowItWorksSection from './components/HowItWorksSection'
 import ProductSection from './components/ProductSection'
 import DemoSection from './components/DemoSection'
 import PartnershipSection from './components/PartnershipSection'
@@ -17,6 +18,7 @@ export default function App() {
         <main>
           <Hero />
           <AboutSection />
+          <HowItWorksSection />
           <ProductSection />
           <DemoSection />
           <PartnershipSection />
