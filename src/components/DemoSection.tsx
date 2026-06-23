@@ -149,9 +149,6 @@ export default function DemoSection() {
   const handlePlay = () => { setIsPlaying(true); videoRef.current?.play() }
   const handlePause = () => { setIsPlaying(false); videoRef.current?.pause() }
 
-  // Badge positions for the 3 corner badges
-  const badgePositions = ['top-5 left-5', 'bottom-6 left-5', 'bottom-6 right-5']
-
   return (
     <Section id="demo" className="border-t border-brand-light-border bg-brand-light-bg">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
@@ -178,14 +175,14 @@ export default function DemoSection() {
               className="relative rounded-2xl bg-brand-light-surface border border-brand-light-border py-10 px-8 sm:py-14 sm:px-12 flex items-center justify-center shadow-sm"
             >
               <PanelBackground />
-              {SITE.demo.badges.map((badge, i) => (
+              {SITE.demo.badges.map((badge) => (
                 <div
                   key={badge.label}
                   className={[
                     'hidden sm:flex absolute z-10 items-center gap-1.5',
                     'bg-white/90 border border-brand-light-border backdrop-blur-sm',
                     'rounded-full px-2.5 py-1 shadow-sm',
-                    badgePositions[i] ?? '',
+                    badge.pos,
                   ].join(' ')}
                 >
                   <motion.span

@@ -118,7 +118,7 @@ function ConversationCard() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
+        transition={{ delay: 1.5, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       >
         <div className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3">
           Auto-generated report

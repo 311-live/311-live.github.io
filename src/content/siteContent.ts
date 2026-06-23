@@ -98,9 +98,9 @@ export const SITE = {
     posterPath: '/demo-poster.png',
     embedUrl: null as string | null,
     badges: [
-      { label: 'Live agent',  dot: '#22d3ee' },
-      { label: 'Auto-report', dot: '#fff200' },
-      { label: 'NYC pilot',   dot: '#94a3b8' },
+      { label: 'Live agent',  dot: '#22d3ee', pos: 'top-5 left-5'    },
+      { label: 'Auto-report', dot: '#fff200', pos: 'bottom-6 left-5'  },
+      { label: 'NYC pilot',   dot: '#94a3b8', pos: 'bottom-6 right-5' },
     ],
     tags: ['Voice + camera', 'Live AI agent', 'Auto-report', 'DTPR transparency'],
   },

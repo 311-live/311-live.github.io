@@ -15,7 +15,7 @@ interface ButtonProps {
 const variantClasses: Record<string, string> = {
   primary:         'bg-brand-yellow text-brand-bg font-semibold hover:brightness-110',
   secondary:       'border border-brand-border text-slate-300 hover:border-brand-yellow hover:text-brand-yellow',
-  'secondary-light':'border border-brand-light-border text-brand-text-muted hover:border-brand-yellow hover:text-brand-yellow',
+  'secondary-light': 'border border-brand-light-border text-brand-text-muted hover:border-brand-yellow hover:text-brand-yellow',
   ghost:           'text-slate-400 hover:text-brand-yellow',
 }
 

@@ -54,7 +54,7 @@ export default function ContactSection() {
   }
 
   return (
-    <Section id="contact" className="border-t border-brand-light-border bg-white">
+    <Section id="contact" className="border-t border-brand-light-border bg-brand-light-surface">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
         {/* Left: header + contact links */}
