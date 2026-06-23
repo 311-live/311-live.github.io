@@ -30,7 +30,7 @@ export default function Navbar() {
       className={[
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-brand-bg/95 backdrop-blur-md border-b border-brand-border'
+          ? 'bg-white/95 dark:bg-brand-bg/95 backdrop-blur-md border-b border-brand-light-border dark:border-brand-border'
           : 'bg-transparent',
       ].join(' ')}
     >
@@ -43,7 +43,7 @@ export default function Navbar() {
           aria-label="311-live home"
         >
           <span className="font-bold text-xl tracking-tight text-brand-yellow">311</span>
-          <span className="font-light text-xl text-white">-live</span>
+          <span className="font-light text-xl text-brand-text dark:text-white">-live</span>
           <motion.span
             className="ml-1.5 w-1.5 h-1.5 rounded-full bg-brand-cyan"
             animate={{ opacity: [1, 0.2, 1] }}
@@ -57,7 +57,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-slate-400 hover:text-white transition-colors duration-150"
+              className="text-sm text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors duration-150"
               onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
             >
               {link.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggle}
-            className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
+            className="p-2 text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors duration-150"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
@@ -79,7 +79,7 @@ export default function Navbar() {
             href={SITE.product.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
+            className="p-2 text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors duration-150"
             aria-label="View source on GitHub"
           >
             <Github size={18} />
@@ -94,7 +94,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
+          className="md:hidden p-2 text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors"
           onClick={() => setMobileOpen((o) => !o)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -111,14 +111,14 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden overflow-hidden bg-brand-bg/98 backdrop-blur-md border-b border-brand-border"
+            className="md:hidden overflow-hidden bg-white/98 dark:bg-brand-bg/98 backdrop-blur-md border-b border-brand-light-border dark:border-brand-border"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {SITE.nav.links.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-slate-400 hover:text-white transition-colors"
+                  className="text-sm text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors"
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
                 >
                   {link.label}
@@ -127,7 +127,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={toggle}
-                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-sm text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors"
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
@@ -137,7 +137,7 @@ export default function Navbar() {
                 href={SITE.product.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-sm text-brand-text-muted dark:text-slate-400 hover:text-brand-text dark:hover:text-white transition-colors"
               >
                 <Github size={15} />
                 GitHub

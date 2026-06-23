@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-brand-bg text-white font-sans antialiased;
+    @apply bg-brand-light-bg text-brand-text font-sans antialiased dark:bg-brand-bg dark:text-white;
   }
 
   ::-webkit-scrollbar {
@@ -16,11 +16,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-brand-bg;
+    @apply bg-brand-light-bg dark:bg-brand-bg;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-brand-border rounded-full;
+    @apply bg-brand-light-border dark:bg-brand-border rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -42,6 +42,12 @@
     box-shadow:
       0 0 0 1px rgba(255, 242, 0, 0.08),
       0 24px 64px rgba(0, 0, 0, 0.65);
+  }
+
+  .card-glow-light {
+    box-shadow:
+      0 0 0 1px rgba(255, 242, 0, 0.12),
+      0 24px 64px rgba(0, 0, 0, 0.08);
   }
 
   /* Radial gradient fade at hero section edges */

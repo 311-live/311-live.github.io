@@ -10,7 +10,7 @@ export const SITE = {
     name: '311-live',
     tagline: 'Mobile-first AI civic reporting for urban service systems.',
     url: 'https://311-live.github.io',
-    github: 'https://github.com/cocoa-huang/311-live',
+    github: 'https://github.com/311-live',
   },
 
   // ── Navbar ────────────────────────────────────────────────────────────────
