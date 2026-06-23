@@ -68,6 +68,7 @@ export default function Navbar() {
         {/* Desktop: GitHub + CTA */}
         <div className="hidden md:flex items-center gap-3">
           <button
+            type="button"
             onClick={toggle}
             className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -124,6 +125,7 @@ export default function Navbar() {
                 </a>
               ))}
               <button
+                type="button"
                 onClick={toggle}
                 className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
