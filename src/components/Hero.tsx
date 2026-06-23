@@ -60,8 +60,22 @@ function LiveSignalGrid() {
 
 // ── Dashboard mockup card ──────────────────────────────────────────────────
 
+const HERO_LIVE_STATS = [
+  { value: '2,847', label: 'Requests Today' },
+  { value: '23',    label: 'Active Hotspots' },
+  { value: 'Noise / DOB', label: 'Top Category' },
+  { value: '4.2h',  label: 'Avg Response' },
+]
+
+const HERO_CATEGORIES = [
+  { name: 'Noise',      pct: 34, color: '#fff200' },
+  { name: 'Streets',    pct: 21, color: '#22d3ee' },
+  { name: 'Housing',    pct: 18, color: '#94a3b8' },
+  { name: 'Sanitation', pct: 14, color: '#64748b' },
+]
+
 function DashboardCard() {
-  const maxPct = Math.max(...SITE.hero.categories.map((c) => c.pct))
+  const maxPct = Math.max(...HERO_CATEGORIES.map((c) => c.pct))
 
   return (
     <motion.div
@@ -87,7 +101,7 @@ function DashboardCard() {
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 gap-x-6 gap-y-5 mb-5">
-        {SITE.hero.liveStats.map((stat, i) => (
+        {HERO_LIVE_STATS.map((stat, i) => (
           <motion.div
             key={stat.label}
             initial={{ opacity: 0, y: 8 }}
@@ -118,7 +132,7 @@ function DashboardCard() {
           Category Breakdown
         </div>
         <div className="space-y-3">
-          {SITE.hero.categories.map((cat, i) => (
+          {HERO_CATEGORIES.map((cat, i) => (
             <div key={cat.name}>
               <div className="flex justify-between text-xs mb-1.5">
                 <span className="text-slate-400">{cat.name}</span>
