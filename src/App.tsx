@@ -4,7 +4,7 @@ import AboutSection from './components/AboutSection'
 import ProductSection from './components/ProductSection'
 import DemoSection from './components/DemoSection'
 import PartnershipSection from './components/PartnershipSection'
-// import TeamSection from './components/TeamSection'
+import TeamSection from './components/TeamSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 
@@ -18,7 +18,7 @@ export default function App() {
         <ProductSection />
         <DemoSection />
         <PartnershipSection />
-        {/* <TeamSection /> */}
+        <TeamSection />
         <ContactSection />
       </main>
       <Footer />
