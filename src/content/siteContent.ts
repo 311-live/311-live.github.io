@@ -187,7 +187,7 @@ export const SITE = {
         role: 'Data Scientist',
         org: 'NYU MSDS',
         linkedin: 'https://linkedin.com/in/zikang-huang/',
-        photo: '/team/eric.png',
+        photo: '/team/eric_2.jpg',
       },
       {
         name: 'Bruce Zhang',
