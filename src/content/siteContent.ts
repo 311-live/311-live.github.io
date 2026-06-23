@@ -176,7 +176,7 @@ export const SITE = {
     // Example: 'https://formspree.io/f/xabc1234'
     // Leave '' to fall back to mailto: link.
     formEndpoint: '',
-    appointmentUrl: 'https://calendar.google.com/',
+    appointmentUrl: 'https://calendly.com/yueqiluo0110/30min',
     appointmentLabel: 'Schedule a conversation',
   },
 
