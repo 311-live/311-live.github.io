@@ -1,3 +1,4 @@
+import { Github } from 'lucide-react'
 import { SITE } from '../content/siteContent'
 
 function scrollToId(id: string) {
@@ -21,8 +22,8 @@ export default function Footer() {
             <p className="text-xs text-slate-500">{SITE.footer.tagline}</p>
           </div>
 
-          {/* Footer links */}
-          <nav className="flex items-center gap-6" aria-label="Footer navigation">
+          {/* Footer links + GitHub */}
+          <nav className="flex items-center gap-6 flex-wrap" aria-label="Footer navigation">
             {SITE.footer.links.map((link) => (
               <a
                 key={link.label}
@@ -38,6 +39,16 @@ export default function Footer() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={SITE.product.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors"
+              aria-label="View source on GitHub"
+            >
+              <Github size={13} />
+              GitHub
+            </a>
           </nav>
         </div>
 

@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Github, Sun, Moon } from 'lucide-react'
 import { SITE } from '../content/siteContent'
 import Button from './Button'
+import { useTheme } from '../context/ThemeContext'
 
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Navbar() {
+  const { theme, toggle } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -50,7 +52,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {SITE.nav.links.map((link) => (
             <a
               key={link.label}
@@ -63,8 +65,25 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
+        {/* Desktop: GitHub + CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            type="button"
+            onClick={toggle}
+            className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
+          <a
+            href={SITE.product.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
+            aria-label="View source on GitHub"
+          >
+            <Github size={18} />
+          </a>
           <Button
             label={SITE.nav.cta.label}
             href={SITE.nav.cta.href}
@@ -105,6 +124,24 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={toggle}
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
+              <a
+                href={SITE.product.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                <Github size={15} />
+                GitHub
+              </a>
               <div className="pt-2">
                 <Button
                   label={SITE.nav.cta.label}

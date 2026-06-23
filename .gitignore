@@ -22,3 +22,9 @@ dist-ssr
 .env
 .env.local
 .env.production
+
+# Local planning docs — not for version control
+docs/
+
+# SDD scratch files
+.superpowers/

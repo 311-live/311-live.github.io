@@ -8,13 +8,15 @@ export const SITE = {
   // ── Brand ─────────────────────────────────────────────────────────────────
   product: {
     name: '311-live',
-    tagline: 'Civic data intelligence for urban service systems.',
+    tagline: 'Mobile-first AI civic reporting for urban service systems.',
     url: 'https://311-live.github.io',
+    github: 'https://github.com/cocoa-huang/311-live',
   },
 
   // ── Navbar ────────────────────────────────────────────────────────────────
   nav: {
     links: [
+      { label: 'About',       href: '#about' },
       { label: 'Product',     href: '#product' },
       { label: 'Demo',        href: '#demo' },
       { label: 'Partnership', href: '#partnership' },
@@ -33,49 +35,56 @@ export const SITE = {
       { label: 'View Demo',        href: '#demo' },
       { label: 'Request a Pilot',  href: '#contact' },
     ],
-    // Fake-but-plausible placeholder values for the live dashboard mockup.
-    // No real data is fetched — these are UI placeholders.
-    liveStats: [
-      { value: '2,847', label: 'Requests Today' },
-      { value: '23',    label: 'Active Hotspots' },
-      { value: 'Noise / DOB', label: 'Top Category' },
-      { value: '4.2h',  label: 'Avg Response' },
-    ],
-    categories: [
-      { name: 'Noise',      pct: 34, color: '#fff200' },
-      { name: 'Streets',    pct: 21, color: '#22d3ee' },
-      { name: 'Housing',    pct: 18, color: '#94a3b8' },
-      { name: 'Sanitation', pct: 14, color: '#64748b' },
+  },
+
+  // ── About / origin section ────────────────────────────────────────────────
+  about: {
+    eyebrow: 'The Project',
+    headline: 'Making the invisible visible',
+    body1:
+      'NYC 311 handles over 37 million contacts annually — yet every report still asks a resident to translate a messy real-world situation into a rigid form. Critical context is lost. Issues go under-reported.',
+    body2:
+      '311 Live closes that gap. Residents speak and show their issue via phone camera to a live AI agent, which asks follow-up questions and auto-generates a clear, contextualized 311 service request — no forms, no ambiguity.',
+    dtprNote:
+      'Built on the DTPR communications standard, the system shows residents exactly what data is being collected, how the AI interprets it, and how the report is routed to city agencies.',
+    stat: {
+      value: '37M+',
+      label: 'annual NYC 311 contacts — each one asking a resident to translate reality into a form',
+    },
+    bullets: [
+      'Voice + camera input — no typing required',
+      'Live AI agent with real-time follow-up questions',
+      'DTPR-compliant transparency layer built in',
     ],
   },
 
   // ── Product / capabilities section ────────────────────────────────────────
   features: {
-    sectionTitle: 'From service requests to operational intelligence',
+    sectionTitle: 'From conversation to civic action',
     cards: [
       {
-        title: 'Live 311 Monitoring',
+        title: 'Multimodal AI Intake',
         description:
-          'Track service request activity by time, category, and geography.',
-        icon: 'Activity',
+          'Residents describe issues via voice and phone camera. The live AI agent listens, sees, and asks follow-up questions to capture full context.',
+        icon: 'Mic',
       },
       {
-        title: 'Spatial Hotspot Detection',
+        title: 'Structured Report Generation',
         description:
-          'Identify emerging clusters of complaints and neighborhood-level service pressure.',
-        icon: 'MapPin',
+          'Converts an open-ended conversation into a clear, categorized 311 service request — no forms, no ambiguity, no missing details.',
+        icon: 'FileText',
       },
       {
-        title: 'Category Intelligence',
+        title: 'DTPR Transparency Layer',
         description:
-          'Compare signals across noise, sanitation, housing, streets, public safety, and infrastructure.',
-        icon: 'BarChart2',
+          'Shows residents exactly what data is collected, how the AI interprets the situation, and which agencies will act on the report.',
+        icon: 'ShieldCheck',
       },
       {
-        title: 'Research-ready Exports',
+        title: 'Post-Submission Data Chain',
         description:
-          'Generate cleaned spatial-temporal datasets for civic analytics, policy research, and pilot evaluation.',
-        icon: 'Download',
+          'After submission, residents see a full data chain: what was inferred, what category was selected, what agency received it, and what happens next.',
+        icon: 'GitBranch',
       },
     ],
   },
@@ -84,35 +93,39 @@ export const SITE = {
   demo: {
     sectionTitle: 'Product demo',
     description:
-      'The demo shows how 311-live can surface live complaint patterns, spatial hotspots, and category-level trends for public-sector monitoring and pilot exploration.',
-    // Local video file — place your demo video at public/demo-video.mp4
+      'See how a resident reports a flooding issue near a school crosswalk — from opening the app to a fully structured 311 report, entirely through voice and camera.',
     videoPath: '/demo-video.mp4',
-    // Poster image — place a preview frame at public/demo-poster.png
     posterPath: '/demo-poster.png',
-    // To switch to a YouTube or Vimeo embed instead of local video, set this
-    // to the embed URL. Example: 'https://www.youtube.com/embed/YOUR_VIDEO_ID'
-    // Set to null to use the local video file above.
     embedUrl: null as string | null,
+    badges: [
+      { label: 'Live agent',  dot: '#22d3ee', pos: 'top-5 left-5'    },
+      { label: 'Auto-report', dot: '#fff200', pos: 'bottom-6 left-5'  },
+      { label: 'NYC pilot',   dot: '#94a3b8', pos: 'bottom-6 right-5' },
+    ],
+    tags: ['Voice + camera', 'Live AI agent', 'Auto-report', 'DTPR transparency'],
   },
 
   // ── Partnership section ───────────────────────────────────────────────────
   partnership: {
     sectionTitle: 'Built for pilot exploration with civic and research partners',
-    body: 'We are looking to collaborate with city agencies, civic technology teams, urban researchers, and public-sector innovation groups interested in using 311 data as a live signal for neighborhood conditions, service demand, and infrastructure stress.',
+    body: 'We are looking to collaborate with city agencies, civic technology teams, urban researchers, and public-sector innovation groups interested in using AI-powered intake as a tool for better 311 data and community transparency.',
     modes: [
       {
+        number: '01',
         title: 'Public-sector pilot',
         description:
-          'Partner with city agencies to test 311 monitoring against operational workflows and service delivery metrics.',
+          'Partner with city agencies to test AI-assisted 311 intake against operational workflows and service delivery metrics.',
         icon: 'Building2',
       },
       {
+        number: '02',
         title: 'Academic / research collaboration',
         description:
-          'Work with urban researchers and civic data scientists to study neighborhood service patterns and policy implications.',
+          'Work with urban researchers and civic data scientists to study how multimodal AI changes the quality and equity of 311 reporting.',
         icon: 'BookOpen',
       },
       {
+        number: '03',
         title: 'Data storytelling / public dashboard',
         description:
           'Surface community-level insights for civic journalism, policy communication, and public transparency.',
@@ -122,26 +135,57 @@ export const SITE = {
     cta: { label: 'Discuss a Pilot', href: '#contact' },
   },
 
+  // ── Team section ──────────────────────────────────────────────────────────
+  team: {
+    sectionTitle: 'The team',
+    body: 'A multidisciplinary team working at the intersection of urban planning, data science, and civic technology in New York City.',
+    members: [
+      {
+        name: 'Eric Huang',
+        role: 'Data Scientist',
+        org: 'NYU MSDS',
+        linkedin: 'https://linkedin.com/in/zikang-huang/',
+      },
+      {
+        name: 'Bruce Zhang',
+        role: 'Data Scientist',
+        org: 'NYU MSDS',
+        linkedin: 'https://www.linkedin.com/in/yiwen-zhang-6a873421a/',
+      },
+      {
+        name: 'Tiffany Luo',
+        role: 'Urban Planner & Civic Strategist',
+        org: 'AICP, LEED AP',
+        linkedin: 'https://www.linkedin.com/in/yueqi-tiffany-luo/',
+      },
+      {
+        name: 'Shuai Wang',
+        role: 'Urban Technology Analyst',
+        org: 'Mobility & Smart Cities',
+        linkedin: 'https://www.linkedin.com/in/shuaiws',
+      },
+    ],
+  },
+
   // ── Contact section ───────────────────────────────────────────────────────
   contact: {
     sectionTitle: 'Get in touch',
     body: 'For pilot conversations, research collaboration, or demo access, contact the 311-live team.',
-    // Replace with your actual email address
-    email: 'bruceywzhang@gmail.com',
-    // Form submission endpoint — supports Formspree, Tally, or any JSON POST API.
-    // Leave empty ('') to fall back to a mailto: link instead.
-    // Formspree example: 'https://formspree.io/f/YOUR_FORM_ID'
+    email: 'yueqiluo0110@gmail.com',
+    // Formspree endpoint — sign up at formspree.io, create a form, paste the URL here.
+    // Example: 'https://formspree.io/f/xabc1234'
+    // Leave '' to fall back to mailto: link.
     formEndpoint: '',
-    // Scheduling / appointment link — Google Meet, Calendly, Cal.com, etc.
-    appointmentUrl: 'https://calendar.google.com/',
+    appointmentUrl: 'https://calendly.com/yueqiluo0110/30min',
     appointmentLabel: 'Schedule a conversation',
   },
 
   // ── Footer ────────────────────────────────────────────────────────────────
   footer: {
-    tagline: 'Civic data intelligence for urban service systems.',
-    note: 'Built as an exploratory civic technology project.',
+    tagline: 'Mobile-first AI civic reporting for urban service systems.',
+    note: 'Built as an exploratory civic technology project — MakeShift 2026.',
     links: [
+      { label: 'About',       href: '#about' },
       { label: 'Demo',        href: '#demo' },
       { label: 'Partnership', href: '#partnership' },
       { label: 'Contact',     href: '#contact' },

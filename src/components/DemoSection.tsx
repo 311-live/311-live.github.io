@@ -5,8 +5,6 @@ import { Play } from 'lucide-react'
 import { SITE } from '../content/siteContent'
 import Section from './Section'
 
-// ── Panel background: grid lines + pulse signal dots ──────────────────────
-
 interface PulseDot { id: number; x: number; y: number; delay: number }
 
 function PanelBackground() {
@@ -27,8 +25,8 @@ function PanelBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,242,0,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,242,0,0.03) 1px, transparent 1px)
+            linear-gradient(rgba(255,242,0,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,242,0,0.04) 1px, transparent 1px)
           `,
           backgroundSize: '48px 48px',
         }}
@@ -38,7 +36,7 @@ function PanelBackground() {
           key={dot.id}
           className="absolute rounded-full bg-brand-yellow"
           style={{ left: `${dot.x}%`, top: `${dot.y}%`, width: 3, height: 3 }}
-          animate={{ opacity: [0, 0.55, 0], scale: [0.5, 2.5, 0.5] }}
+          animate={{ opacity: [0, 0.4, 0], scale: [0.5, 2.5, 0.5] }}
           transition={{
             duration: 3,
             delay: dot.delay,
@@ -52,28 +50,6 @@ function PanelBackground() {
   )
 }
 
-// ── Decorative floating label badges ──────────────────────────────────────
-
-const PANEL_BADGES: Array<{ label: string; pos: string; dot: string }> = [
-  { label: 'Live feed',  pos: 'top-5 left-5',    dot: '#22d3ee' },
-  { label: '311 signal', pos: 'bottom-6 left-5', dot: '#fff200' },
-  { label: 'NYC pilot',  pos: 'bottom-6 right-5',dot: '#94a3b8' },
-]
-
-// ── iPhone 13-style phone mockup ──────────────────────────────────────────
-//
-// Structure:
-//   .sizing-wrapper      — sets responsive width; anchors absolute side buttons
-//     [left buttons]     — mute switch, vol+, vol− (absolute, outside left edge)
-//     [right button]     — power / sleep-wake (absolute, outside right edge)
-//     .device-frame      — dark graphite outer shell, 46px radius, 2.5px border
-//       .screen-inset    — 11px bezel, 36px radius, overflow:hidden, 390/844 ratio
-//         .notch         — iPhone 13 centred notch, rounded bottom, speaker slit
-//         video          — object-contain so full recording is visible
-//         .play-overlay  — yellow play button, shown when not playing
-//         .pause-zone    — invisible tap target when playing
-//         .glare         — subtle diagonal highlight over screen
-
 interface PhoneMockupProps {
   isPlaying: boolean
   onPlay:    () => void
@@ -83,91 +59,40 @@ interface PhoneMockupProps {
 
 function PhoneMockup({ isPlaying, onPlay, onPause, videoRef }: PhoneMockupProps) {
   return (
-    <div
-      className="relative mx-auto"
-      style={{ width: 'min(72vw, 288px)' }}
-    >
-
-      {/* ── Left: mute switch ── */}
-      <div
-        className="absolute left-0 -translate-x-full pointer-events-none"
-        style={{ top: '11%' }}
-      >
-        <div
-          className="rounded-l-[2px]"
-          style={{ width: 3, height: 22, background: '#2d2d2f' }}
-        />
+    <div className="relative mx-auto" style={{ width: 'min(72vw, 288px)' }}>
+      <div className="absolute left-0 -translate-x-full pointer-events-none" style={{ top: '11%' }}>
+        <div className="rounded-l-[2px]" style={{ width: 3, height: 22, background: '#2d2d2f' }} />
       </div>
-
-      {/* ── Left: volume up + volume down ── */}
-      <div
-        className="absolute left-0 -translate-x-full pointer-events-none flex flex-col"
-        style={{ top: '21%', gap: 11 }}
-      >
+      <div className="absolute left-0 -translate-x-full pointer-events-none flex flex-col" style={{ top: '21%', gap: 11 }}>
         <div className="rounded-l-[2px]" style={{ width: 3, height: 42, background: '#2d2d2f' }} />
         <div className="rounded-l-[2px]" style={{ width: 3, height: 42, background: '#2d2d2f' }} />
       </div>
-
-      {/* ── Right: power / sleep-wake button ── */}
-      <div
-        className="absolute right-0 translate-x-full pointer-events-none"
-        style={{ top: '24%' }}
-      >
+      <div className="absolute right-0 translate-x-full pointer-events-none" style={{ top: '24%' }}>
         <div className="rounded-r-[2px]" style={{ width: 3, height: 70, background: '#2d2d2f' }} />
       </div>
-
-      {/* ── Outer device frame ── */}
       <div
         className="relative bg-[#1c1c1e]"
         style={{
-          borderRadius:  46,
-          border:        '2.5px solid #3a3a3c',
-          padding:       11,
+          borderRadius: 46,
+          border: '2.5px solid #3a3a3c',
+          padding: 11,
           boxShadow: [
-            /* inner top highlight  */ 'inset 0 1.5px 0 rgba(255,255,255,0.07)',
-            /* inner bottom shade   */ 'inset 0 -1px 0 rgba(0,0,0,0.5)',
-            /* outer rim            */ '0 0 0 0.5px rgba(255,255,255,0.04)',
-            /* brand yellow ring    */ '0 0 0 1.5px rgba(255,242,0,0.11)',
-            /* deep cast shadow     */ '0 32px 80px rgba(0,0,0,0.9)',
-            /* near shadow          */ '0 8px 20px rgba(0,0,0,0.6)',
+            'inset 0 1.5px 0 rgba(255,255,255,0.07)',
+            'inset 0 -1px 0 rgba(0,0,0,0.5)',
+            '0 0 0 0.5px rgba(255,255,255,0.04)',
+            '0 0 0 1.5px rgba(255,242,0,0.11)',
+            '0 32px 80px rgba(0,0,0,0.35)',
+            '0 8px 20px rgba(0,0,0,0.2)',
           ].join(', '),
         }}
       >
-        {/* ── Screen inset (bezel + overflow clip) ── */}
-        <div
-          className="relative overflow-hidden bg-black"
-          style={{ borderRadius: 36, aspectRatio: '390 / 844' }}
-        >
-
-          {/* ── iPhone 13 centred notch ── */}
+        <div className="relative overflow-hidden bg-black" style={{ borderRadius: 36, aspectRatio: '390 / 844' }}>
           <div
             className="absolute z-20 bg-black pointer-events-none"
-            style={{
-              top:       8,
-              left:      '50%',
-              transform: 'translateX(-50%)',
-              width:     112,
-              height:    26,
-              /* round only the bottom corners, flat on top (flush with screen edge) */
-              borderRadius: '0 0 18px 18px',
-            }}
+            style={{ top: 8, left: '50%', transform: 'translateX(-50%)', width: 112, height: 26, borderRadius: '0 0 18px 18px' }}
           >
-            {/* Earpiece / speaker slit */}
-            <div
-              className="absolute rounded-full"
-              style={{
-                width:     44,
-                height:    3,
-                top:       '50%',
-                left:      '50%',
-                transform: 'translate(-50%, -50%)',
-                background:'#2c2c2e',
-              }}
-            />
+            <div className="absolute rounded-full" style={{ width: 44, height: 3, top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: '#2c2c2e' }} />
           </div>
-
-          {/* ── Demo video ── */}
-          {/* object-contain keeps the full mobile recording visible without cropping */}
           <video
             ref={videoRef}
             className="absolute inset-0 w-full h-full object-contain bg-black"
@@ -177,8 +102,6 @@ function PhoneMockup({ isPlaying, onPlay, onPause, videoRef }: PhoneMockupProps)
           >
             <source src={SITE.demo.videoPath} type="video/mp4" />
           </video>
-
-          {/* ── Play overlay (shown when not playing) ── */}
           <AnimatePresence>
             {!isPlaying && (
               <motion.div
@@ -193,7 +116,7 @@ function PhoneMockup({ isPlaying, onPlay, onPause, videoRef }: PhoneMockupProps)
                 aria-label="Play demo"
               >
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
                   whileTap={{ scale: 0.92 }}
                   className="w-14 h-14 rounded-full bg-brand-yellow flex items-center justify-center"
                   style={{ boxShadow: '0 8px 32px rgba(255,242,0,0.4)' }}
@@ -206,24 +129,12 @@ function PhoneMockup({ isPlaying, onPlay, onPause, videoRef }: PhoneMockupProps)
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* ── Tap-to-pause zone (shown while playing) ── */}
           {isPlaying && (
-            <div
-              className="absolute inset-0 z-10 cursor-pointer"
-              onClick={onPause}
-              aria-label="Pause demo"
-            />
+            <div className="absolute inset-0 z-10 cursor-pointer" onClick={onPause} aria-label="Pause demo" />
           )}
-
-          {/* ── Screen glare: diagonal top-left reflection ── */}
           <div
             className="absolute inset-0 z-30 pointer-events-none"
-            style={{
-              borderRadius: 36,
-              background:
-                'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 42%)',
-            }}
+            style={{ borderRadius: 36, background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 42%)' }}
           />
         </div>
       </div>
@@ -231,36 +142,26 @@ function PhoneMockup({ isPlaying, onPlay, onPause, videoRef }: PhoneMockupProps)
   )
 }
 
-// ── Demo section ───────────────────────────────────────────────────────────
-
 export default function DemoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const handlePlay = () => {
-    setIsPlaying(true)
-    videoRef.current?.play()
-  }
-
-  const handlePause = () => {
-    setIsPlaying(false)
-    videoRef.current?.pause()
-  }
+  const handlePlay = () => { setIsPlaying(true); videoRef.current?.play() }
+  const handlePause = () => { setIsPlaying(false); videoRef.current?.pause() }
 
   return (
-    <Section id="demo" className="border-t border-brand-border">
+    <Section id="demo" className="border-t border-brand-light-border dark:border-brand-border bg-brand-light-bg dark:bg-brand-bg">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-        {/* ── Left: demo panel containing the phone ── */}
+        {/* Left: demo panel */}
         <motion.div
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.65 }}
+          transition={{ duration: 0.65, ease: [0.23, 1, 0.32, 1] }}
         >
           {SITE.demo.embedUrl ? (
-            /* Horizontal iframe fallback for YouTube / Vimeo */
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-brand-border">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-brand-light-border dark:border-brand-border">
               <iframe
                 src={SITE.demo.embedUrl}
                 className="absolute inset-0 w-full h-full"
@@ -270,24 +171,17 @@ export default function DemoSection() {
               />
             </div>
           ) : (
-            /* Dark presentation panel */
             <div
-              className="relative rounded-2xl bg-brand-surface border border-brand-border py-10 px-8 sm:py-14 sm:px-12 flex items-center justify-center"
-              style={{
-                boxShadow:
-                  '0 0 0 1px rgba(255,242,0,0.05), 0 40px 100px rgba(0,0,0,0.6)',
-              }}
+              className="relative rounded-2xl bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border py-10 px-8 sm:py-14 sm:px-12 flex items-center justify-center shadow-sm"
             >
               <PanelBackground />
-
-              {/* Corner label badges — hidden on mobile to avoid crowding */}
-              {PANEL_BADGES.map((badge) => (
+              {SITE.demo.badges.map((badge) => (
                 <div
                   key={badge.label}
                   className={[
                     'hidden sm:flex absolute z-10 items-center gap-1.5',
-                    'bg-brand-bg/80 border border-brand-border backdrop-blur-sm',
-                    'rounded-full px-2.5 py-1',
+                    'bg-white/90 dark:bg-brand-surface/90 border border-brand-light-border dark:border-brand-border backdrop-blur-sm',
+                    'rounded-full px-2.5 py-1 shadow-sm',
                     badge.pos,
                   ].join(' ')}
                 >
@@ -297,51 +191,42 @@ export default function DemoSection() {
                     animate={{ opacity: [1, 0.2, 1] }}
                     transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
                   />
-                  <span className="text-[10px] font-mono text-slate-300 uppercase tracking-widest whitespace-nowrap">
+                  <span className="text-[10px] font-mono text-brand-text-muted dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">
                     {badge.label}
                   </span>
                 </div>
               ))}
-
-              {/* Phone — z-10 so it sits above the background layer */}
               <div className="relative z-10 w-full">
-                <PhoneMockup
-                  isPlaying={isPlaying}
-                  onPlay={handlePlay}
-                  onPause={handlePause}
-                  videoRef={videoRef}
-                />
+                <PhoneMockup isPlaying={isPlaying} onPlay={handlePlay} onPause={handlePause} videoRef={videoRef} />
               </div>
             </div>
           )}
         </motion.div>
 
-        {/* ── Right: section label + heading + description + tags ── */}
+        {/* Right: copy */}
         <motion.div
           initial={{ opacity: 0, x: 16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.65, delay: 0.1 }}
+          transition={{ duration: 0.65, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
           className="flex flex-col justify-center space-y-6"
         >
           <div>
             <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest mb-4">
               Demo
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="text-3xl lg:text-4xl font-bold text-brand-text dark:text-white">
               {SITE.demo.sectionTitle}
             </h2>
           </div>
-
-          <p className="text-slate-400 leading-relaxed text-lg">
+          <p className="text-brand-text-muted dark:text-slate-400 leading-relaxed text-lg">
             {SITE.demo.description}
           </p>
-
           <div className="flex flex-wrap gap-2 pt-2">
-            {['Live patterns', 'Spatial hotspots', 'Category trends', 'Pilot-ready'].map((tag) => (
+            {SITE.demo.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-mono text-slate-400 border border-brand-border rounded-full px-3 py-1"
+                className="text-xs font-mono text-brand-text-muted dark:text-slate-400 border border-brand-light-border dark:border-brand-border rounded-full px-3 py-1 bg-brand-light-surface dark:bg-brand-surface"
               >
                 {tag}
               </span>

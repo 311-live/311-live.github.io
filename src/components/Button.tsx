@@ -4,7 +4,7 @@ interface ButtonProps {
   label: string
   href?: string
   onClick?: () => void
-  variant?: 'primary' | 'secondary' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'secondary-light' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
   type?: 'button' | 'submit'
@@ -13,9 +13,10 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<string, string> = {
-  primary:   'bg-brand-yellow text-brand-bg font-semibold hover:brightness-110',
-  secondary: 'border border-brand-border text-slate-300 hover:border-brand-yellow hover:text-brand-yellow',
-  ghost:     'text-slate-400 hover:text-brand-yellow',
+  primary:         'bg-brand-yellow text-brand-bg font-semibold hover:brightness-110',
+  secondary:       'border border-brand-border text-slate-300 hover:border-brand-yellow hover:text-brand-yellow',
+  'secondary-light': 'border border-brand-light-border text-brand-text-muted hover:border-brand-yellow hover:text-brand-yellow',
+  ghost:           'text-slate-400 hover:text-brand-yellow',
 }
 
 const sizeClasses: Record<string, string> = {
