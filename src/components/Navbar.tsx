@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Github } from 'lucide-react'
+import { Menu, X, Github, Sun, Moon } from 'lucide-react'
 import { SITE } from '../content/siteContent'
 import Button from './Button'
+import { useTheme } from '../context/ThemeContext'
 
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Navbar() {
+  const { theme, toggle } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -65,6 +67,13 @@ export default function Navbar() {
 
         {/* Desktop: GitHub + CTA */}
         <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={toggle}
+            className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
           <a
             href={SITE.product.github}
             target="_blank"
@@ -114,6 +123,14 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={toggle}
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
               <a
                 href={SITE.product.github}
                 target="_blank"
