@@ -16,8 +16,9 @@ export const SITE = {
   // ── Navbar ────────────────────────────────────────────────────────────────
   nav: {
     links: [
-      { label: 'About',       href: '#about' },
-      { label: 'Product',     href: '#product' },
+      { label: 'About',        href: '#about' },
+      { label: 'How It Works', href: '#how-it-works' },
+      { label: 'Product',      href: '#product' },
       { label: 'Demo',        href: '#demo' },
       { label: 'Partnership', href: '#partnership' },
       { label: 'Contact',     href: '#contact' },
@@ -42,17 +43,17 @@ export const SITE = {
     eyebrow: 'The Project',
     headline: 'Making the invisible visible',
     body1:
-      'NYC 311 handles over 37 million contacts annually — yet every report still asks a resident to translate a messy real-world situation into a rigid form. Critical context is lost. Issues go under-reported.',
+      'NYC 311 handles over 37 million contacts annually. Every report still asks a resident to translate a messy real-world situation into a rigid form. Critical context is lost. Issues go under-reported.',
     body2:
-      '311 Live closes that gap. Residents speak and show their issue via phone camera to a live AI agent, which asks follow-up questions and auto-generates a clear, contextualized 311 service request — no forms, no ambiguity.',
+      '311 Live closes that gap. Residents speak and show their issue via phone camera to a live AI agent, which asks follow-up questions and auto-generates a clear, contextualized 311 service request: no forms, no ambiguity.',
     dtprNote:
       'Built on the DTPR communications standard, the system shows residents exactly what data is being collected, how the AI interprets it, and how the report is routed to city agencies.',
     stat: {
       value: '37M+',
-      label: 'annual NYC 311 contacts — each one asking a resident to translate reality into a form',
+      label: 'annual NYC 311 contacts, each one asking a resident to translate reality into a form',
     },
     bullets: [
-      'Voice + camera input — no typing required',
+      'Voice and camera input: no typing required',
       'Live AI agent with real-time follow-up questions',
       'DTPR-compliant transparency layer built in',
     ],
@@ -71,7 +72,7 @@ export const SITE = {
       {
         title: 'Structured Report Generation',
         description:
-          'Converts an open-ended conversation into a clear, categorized 311 service request — no forms, no ambiguity, no missing details.',
+          'Converts an open-ended conversation into a clear, categorized 311 service request: no forms, no ambiguity, no missing details.',
         icon: 'FileText',
       },
       {
@@ -89,11 +90,52 @@ export const SITE = {
     ],
   },
 
+  // ── How It Works section ──────────────────────────────────────────────────
+  howItWorks: {
+    sectionTitle: 'One conversation. A complete report.',
+    steps: [
+      {
+        number: '01',
+        headline: 'Raises the phone',
+        body: 'The resident raises their phone and shows the issue as it is happening.',
+      },
+      {
+        number: '02',
+        headline: 'Sees and listens',
+        body: '311 Live reads the scene and hears the resident at the same time.',
+      },
+      {
+        number: '03',
+        headline: 'Asks the right questions',
+        body: 'It asks targeted follow-up questions about access and impact.',
+      },
+      {
+        number: '04',
+        headline: 'Routed report',
+        body: 'A complete report, suggested to the right department.',
+      },
+    ],
+    impact: [
+      {
+        title: 'Better intake',
+        body: 'Removes incomplete, error-prone submissions that manual entry produces.',
+      },
+      {
+        title: 'Better routing confidence',
+        body: '311 Live suggests which department should handle the report, reducing misrouting and follow-up clarification.',
+      },
+      {
+        title: 'Better resident trust',
+        body: 'Residents see how their report is understood before anything is sent.',
+      },
+    ],
+  },
+
   // ── Demo section ──────────────────────────────────────────────────────────
   demo: {
     sectionTitle: 'Product demo',
     description:
-      'See how a resident reports a flooding issue near a school crosswalk — from opening the app to a fully structured 311 report, entirely through voice and camera.',
+      'See how a resident reports a flooding issue near a school crosswalk: from opening the app to a fully structured 311 report, entirely through voice and camera.',
     videoPath: '/demo-video.mp4',
     posterPath: '/demo-poster.png',
     embedUrl: null as string | null,
@@ -145,24 +187,28 @@ export const SITE = {
         role: 'Data Scientist',
         org: 'NYU MSDS',
         linkedin: 'https://linkedin.com/in/zikang-huang/',
+        photo: '/team/eric.png',
       },
       {
         name: 'Bruce Zhang',
         role: 'Data Scientist',
         org: 'NYU MSDS',
         linkedin: 'https://www.linkedin.com/in/yiwen-zhang-6a873421a/',
+        photo: '/team/bruce.png',
       },
       {
         name: 'Tiffany Luo',
         role: 'Urban Planner & Civic Strategist',
         org: 'AICP, LEED AP',
         linkedin: 'https://www.linkedin.com/in/yueqi-tiffany-luo/',
+        photo: '/team/tiffany.png',
       },
       {
         name: 'Shuai Wang',
         role: 'Urban Technology Analyst',
         org: 'Mobility & Smart Cities',
         linkedin: 'https://www.linkedin.com/in/shuaiws',
+        photo: '/team/shuai.png',
       },
     ],
   },
@@ -183,7 +229,7 @@ export const SITE = {
   // ── Footer ────────────────────────────────────────────────────────────────
   footer: {
     tagline: 'Mobile-first AI civic reporting for urban service systems.',
-    note: 'Built as an exploratory civic technology project — MakeShift 2026.',
+    note: 'Built as an exploratory civic technology project, MakeShift 2026.',
     links: [
       { label: 'About',       href: '#about' },
       { label: 'Demo',        href: '#demo' },

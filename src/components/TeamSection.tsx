@@ -44,33 +44,52 @@ export default function TeamSection() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
-            className="bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col gap-4"
+            className="bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col"
           >
-            {/* Initials avatar */}
-            <div className="w-12 h-12 rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
-              <span className="text-sm font-bold text-brand-bg tracking-wide">
-                {getInitials(member.name)}
-              </span>
-            </div>
+            {/* Photo or initials fallback */}
+            {member.photo ? (
+              <div className="h-48 overflow-hidden bg-brand-light-border dark:bg-brand-border">
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            ) : (
+              <div className="h-48 bg-brand-yellow/10 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-brand-yellow flex items-center justify-center">
+                  <span className="text-lg font-bold text-brand-bg tracking-wide">
+                    {getInitials(member.name)}
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* Info */}
-            <div className="flex-1">
-              <div className="font-semibold text-brand-text dark:text-white mb-0.5">{member.name}</div>
-              <div className="text-sm text-brand-text-muted dark:text-slate-400">{member.role}</div>
-              <div className="text-xs text-brand-text-muted/70 dark:text-slate-500 mt-0.5 font-mono">{member.org}</div>
-            </div>
+            <div className="p-6 flex flex-col gap-3 flex-1">
+              <div>
+                <div className="font-semibold text-brand-text dark:text-white mb-0.5">
+                  {member.name}
+                </div>
+                <div className="text-sm text-brand-text-muted dark:text-slate-400">
+                  {member.role}
+                </div>
+                <div className="text-xs text-brand-text-muted/70 dark:text-slate-500 mt-0.5 font-mono">
+                  {member.org}
+                </div>
+              </div>
 
-            {/* LinkedIn */}
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-brand-text-muted dark:text-slate-400 hover:text-brand-yellow transition-colors duration-150"
-              aria-label={`${member.name} on LinkedIn`}
-            >
-              <Linkedin size={13} />
-              LinkedIn
-            </a>
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-brand-text-muted dark:text-slate-400 hover:text-brand-yellow transition-colors duration-150 mt-auto"
+                aria-label={`${member.name} on LinkedIn`}
+              >
+                <Linkedin size={13} />
+                LinkedIn
+              </a>
+            </div>
           </motion.div>
         ))}
       </div>
