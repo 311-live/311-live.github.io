@@ -150,7 +150,7 @@ export default function DemoSection() {
   const handlePause = () => { setIsPlaying(false); videoRef.current?.pause() }
 
   return (
-    <Section id="demo" className="border-t border-brand-light-border bg-brand-light-bg">
+    <Section id="demo" className="border-t border-brand-light-border dark:border-brand-border bg-brand-light-bg dark:bg-brand-bg">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
         {/* Left: demo panel */}
@@ -161,7 +161,7 @@ export default function DemoSection() {
           transition={{ duration: 0.65, ease: [0.23, 1, 0.32, 1] }}
         >
           {SITE.demo.embedUrl ? (
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-brand-light-border">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-brand-light-border dark:border-brand-border">
               <iframe
                 src={SITE.demo.embedUrl}
                 className="absolute inset-0 w-full h-full"
@@ -172,7 +172,7 @@ export default function DemoSection() {
             </div>
           ) : (
             <div
-              className="relative rounded-2xl bg-brand-light-surface border border-brand-light-border py-10 px-8 sm:py-14 sm:px-12 flex items-center justify-center shadow-sm"
+              className="relative rounded-2xl bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border py-10 px-8 sm:py-14 sm:px-12 flex items-center justify-center shadow-sm"
             >
               <PanelBackground />
               {SITE.demo.badges.map((badge) => (
@@ -180,7 +180,7 @@ export default function DemoSection() {
                   key={badge.label}
                   className={[
                     'hidden sm:flex absolute z-10 items-center gap-1.5',
-                    'bg-white/90 border border-brand-light-border backdrop-blur-sm',
+                    'bg-white/90 dark:bg-brand-surface/90 border border-brand-light-border dark:border-brand-border backdrop-blur-sm',
                     'rounded-full px-2.5 py-1 shadow-sm',
                     badge.pos,
                   ].join(' ')}
@@ -191,7 +191,7 @@ export default function DemoSection() {
                     animate={{ opacity: [1, 0.2, 1] }}
                     transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
                   />
-                  <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-widest whitespace-nowrap">
+                  <span className="text-[10px] font-mono text-brand-text-muted dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">
                     {badge.label}
                   </span>
                 </div>
@@ -215,18 +215,18 @@ export default function DemoSection() {
             <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest mb-4">
               Demo
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-brand-text">
+            <h2 className="text-3xl lg:text-4xl font-bold text-brand-text dark:text-white">
               {SITE.demo.sectionTitle}
             </h2>
           </div>
-          <p className="text-brand-text-muted leading-relaxed text-lg">
+          <p className="text-brand-text-muted dark:text-slate-400 leading-relaxed text-lg">
             {SITE.demo.description}
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {SITE.demo.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-mono text-brand-text-muted border border-brand-light-border rounded-full px-3 py-1 bg-brand-light-surface"
+                className="text-xs font-mono text-brand-text-muted dark:text-slate-400 border border-brand-light-border dark:border-brand-border rounded-full px-3 py-1 bg-brand-light-surface dark:bg-brand-surface"
               >
                 {tag}
               </span>

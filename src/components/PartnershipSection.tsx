@@ -12,7 +12,7 @@ const iconMap: Record<string, typeof Building2> = {
 
 export default function PartnershipSection() {
   return (
-    <Section id="partnership" className="border-t border-brand-light-border bg-white">
+    <Section id="partnership" className="border-t border-brand-light-border dark:border-brand-border bg-white dark:bg-brand-bg">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -24,10 +24,10 @@ export default function PartnershipSection() {
         <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest mb-4">
           Partnership
         </p>
-        <h2 className="text-3xl lg:text-4xl font-bold text-brand-text mb-5">
+        <h2 className="text-3xl lg:text-4xl font-bold text-brand-text dark:text-white mb-5">
           {SITE.partnership.sectionTitle}
         </h2>
-        <p className="text-lg text-brand-text-muted leading-relaxed">
+        <p className="text-lg text-brand-text-muted dark:text-slate-400 leading-relaxed">
           {SITE.partnership.body}
         </p>
       </motion.div>
@@ -44,11 +44,11 @@ export default function PartnershipSection() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.23, 1, 0.32, 1] }}
             >
-              {i > 0 && <div className="border-t border-brand-light-border" />}
+              {i > 0 && <div className="border-t border-brand-light-border dark:border-brand-border" />}
               <div className="py-10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-12 items-start">
                 {/* Number + icon */}
                 <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-2">
-                  <span className="text-4xl font-bold text-brand-light-border select-none leading-none">
+                  <span className="text-4xl font-bold text-brand-light-border dark:text-brand-border select-none leading-none">
                     {mode.number}
                   </span>
                   <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-yellow/10 text-brand-yellow">
@@ -57,8 +57,8 @@ export default function PartnershipSection() {
                 </div>
                 {/* Text */}
                 <div>
-                  <h3 className="text-xl font-semibold text-brand-text mb-3">{mode.title}</h3>
-                  <p className="text-base text-brand-text-muted leading-relaxed max-w-xl">
+                  <h3 className="text-xl font-semibold text-brand-text dark:text-white mb-3">{mode.title}</h3>
+                  <p className="text-base text-brand-text-muted dark:text-slate-400 leading-relaxed max-w-xl">
                     {mode.description}
                   </p>
                 </div>
@@ -66,7 +66,7 @@ export default function PartnershipSection() {
             </motion.div>
           )
         })}
-        <div className="border-t border-brand-light-border" />
+        <div className="border-t border-brand-light-border dark:border-brand-border" />
       </div>
 
       {/* CTA */}
