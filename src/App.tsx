@@ -1,3 +1,4 @@
+import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
@@ -10,18 +11,20 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-brand-bg">
-      <Navbar />
-      <main>
-        <Hero />
-        <AboutSection />
-        <ProductSection />
-        <DemoSection />
-        <PartnershipSection />
-        <TeamSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-brand-light-bg dark:bg-brand-bg">
+        <Navbar />
+        <main>
+          <Hero />
+          <AboutSection />
+          <ProductSection />
+          <DemoSection />
+          <PartnershipSection />
+          <TeamSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
