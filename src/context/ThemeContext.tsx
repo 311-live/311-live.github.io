@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 
 type Theme = 'light' | 'dark'
 
@@ -7,7 +7,7 @@ const ThemeContext = createContext<{ theme: Theme; toggle: () => void }>({
   toggle: () => {},
 })
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem('311live-theme') as Theme | null
     if (stored === 'light' || stored === 'dark') return stored
