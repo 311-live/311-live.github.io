@@ -11,8 +11,11 @@ type Status = 'idle' | 'sending' | 'sent' | 'error'
 const EMPTY_FORM: FormState = { name: '', org: '', email: '', message: '' }
 
 const inputClass =
-  'w-full bg-brand-light-surface border border-brand-light-border rounded-lg px-4 py-3 text-sm text-brand-text ' +
-  'placeholder:text-gray-400 focus:outline-none focus:border-brand-yellow/60 focus:ring-1 focus:ring-brand-yellow/20 ' +
+  'w-full bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border ' +
+  'rounded-lg px-4 py-3 text-sm text-brand-text dark:text-white ' +
+  'placeholder:text-gray-400 dark:placeholder:text-slate-500 ' +
+  'focus:outline-none focus:border-brand-yellow/60 dark:focus:border-brand-yellow/60 ' +
+  'focus:ring-1 focus:ring-brand-yellow/20 dark:focus:ring-brand-yellow/20 ' +
   'transition-colors duration-200'
 
 export default function ContactSection() {
@@ -54,7 +57,7 @@ export default function ContactSection() {
   }
 
   return (
-    <Section id="contact" className="border-t border-brand-light-border bg-brand-light-surface">
+    <Section id="contact" className="border-t border-brand-light-border dark:border-brand-border bg-brand-light-surface dark:bg-brand-bg">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
         {/* Left: header + contact links */}
@@ -69,10 +72,10 @@ export default function ContactSection() {
             <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest mb-4">
               Contact
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-brand-text mb-5">
+            <h2 className="text-3xl lg:text-4xl font-bold text-brand-text dark:text-white mb-5">
               {SITE.contact.sectionTitle}
             </h2>
-            <p className="text-lg text-brand-text-muted leading-relaxed">
+            <p className="text-lg text-brand-text-muted dark:text-slate-400 leading-relaxed">
               {SITE.contact.body}
             </p>
           </div>
@@ -80,9 +83,9 @@ export default function ContactSection() {
           <div className="space-y-3">
             <a
               href={`mailto:${SITE.contact.email}`}
-              className="flex items-center gap-3 text-sm text-brand-text-muted hover:text-brand-yellow transition-colors group"
+              className="flex items-center gap-3 text-sm text-brand-text-muted dark:text-slate-400 hover:text-brand-yellow transition-colors group"
             >
-              <span className="w-9 h-9 rounded-lg bg-brand-light-surface border border-brand-light-border flex items-center justify-center group-hover:border-brand-yellow/40 transition-colors shadow-sm">
+              <span className="w-9 h-9 rounded-lg bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border flex items-center justify-center group-hover:border-brand-yellow/40 transition-colors shadow-sm">
                 <Mail size={15} />
               </span>
               {SITE.contact.email}
@@ -91,9 +94,9 @@ export default function ContactSection() {
               href={SITE.contact.appointmentUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm text-brand-text-muted hover:text-brand-yellow transition-colors group"
+              className="flex items-center gap-3 text-sm text-brand-text-muted dark:text-slate-400 hover:text-brand-yellow transition-colors group"
             >
-              <span className="w-9 h-9 rounded-lg bg-brand-light-surface border border-brand-light-border flex items-center justify-center group-hover:border-brand-yellow/40 transition-colors shadow-sm">
+              <span className="w-9 h-9 rounded-lg bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border flex items-center justify-center group-hover:border-brand-yellow/40 transition-colors shadow-sm">
                 <CalendarDays size={15} />
               </span>
               {SITE.contact.appointmentLabel}
@@ -101,9 +104,9 @@ export default function ContactSection() {
           </div>
 
           {!SITE.contact.formEndpoint && (
-            <p className="text-xs text-brand-text-muted/60">
+            <p className="text-xs text-brand-text-muted/60 dark:text-slate-500">
               Submitting the form opens your email client.{' '}
-              <a href={`mailto:${SITE.contact.email}`} className="text-brand-text-muted hover:text-brand-yellow underline">
+              <a href={`mailto:${SITE.contact.email}`} className="text-brand-text-muted dark:text-slate-400 hover:text-brand-yellow underline">
                 Email directly
               </a>
               {' '}if you prefer.
@@ -121,10 +124,10 @@ export default function ContactSection() {
           {status === 'sent' ? (
             <div className="flex flex-col items-center justify-center text-center py-16 gap-4">
               <CheckCircle size={40} className="text-green-500" />
-              <p className="text-lg font-semibold text-brand-text">Message received</p>
-              <p className="text-sm text-brand-text-muted">We'll follow up soon.</p>
+              <p className="text-lg font-semibold text-brand-text dark:text-white">Message received</p>
+              <p className="text-sm text-brand-text-muted dark:text-slate-400">We'll follow up soon.</p>
               <button
-                className="text-xs text-brand-text-muted/60 hover:text-brand-text-muted mt-2 underline"
+                className="text-xs text-brand-text-muted/60 dark:text-slate-500 hover:text-brand-text-muted dark:hover:text-slate-400 mt-2 underline"
                 onClick={() => setStatus('idle')}
               >
                 Send another message
@@ -134,7 +137,7 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-brand-text-muted uppercase tracking-wide mb-1.5 font-medium" htmlFor="name">
+                  <label className="block text-xs text-brand-text-muted dark:text-slate-400 uppercase tracking-wide mb-1.5 font-medium" htmlFor="name">
                     Name
                   </label>
                   <input
@@ -145,7 +148,7 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-brand-text-muted uppercase tracking-wide mb-1.5 font-medium" htmlFor="org">
+                  <label className="block text-xs text-brand-text-muted dark:text-slate-400 uppercase tracking-wide mb-1.5 font-medium" htmlFor="org">
                     Organization
                   </label>
                   <input
@@ -158,7 +161,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block text-xs text-brand-text-muted uppercase tracking-wide mb-1.5 font-medium" htmlFor="email">
+                <label className="block text-xs text-brand-text-muted dark:text-slate-400 uppercase tracking-wide mb-1.5 font-medium" htmlFor="email">
                   Email
                 </label>
                 <input
@@ -170,7 +173,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block text-xs text-brand-text-muted uppercase tracking-wide mb-1.5 font-medium" htmlFor="message">
+                <label className="block text-xs text-brand-text-muted dark:text-slate-400 uppercase tracking-wide mb-1.5 font-medium" htmlFor="message">
                   Message
                 </label>
                 <textarea
