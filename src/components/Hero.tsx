@@ -64,11 +64,11 @@ function ConversationCard() {
       initial={{ opacity: 0, x: 24 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.9, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
-      className="relative bg-brand-surface border border-brand-border rounded-2xl p-6 card-glow w-full"
+      className="relative bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border rounded-2xl p-6 card-glow-light dark:card-glow w-full"
     >
       {/* Card header */}
-      <div className="flex items-center justify-between mb-5 pb-4 border-b border-brand-border">
-        <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">
+      <div className="flex items-center justify-between mb-5 pb-4 border-b border-brand-light-border dark:border-brand-border">
+        <span className="text-xs font-mono text-brand-text-muted dark:text-slate-500 uppercase tracking-widest">
           311-LIVE · LIVE SESSION
         </span>
         <div className="flex items-center gap-2">
@@ -91,7 +91,7 @@ function ConversationCard() {
         <div className="text-[10px] font-mono text-brand-cyan uppercase tracking-widest mb-1.5">
           Agent
         </div>
-        <div className="bg-brand-bg border border-brand-border rounded-xl rounded-tl-sm px-4 py-3 text-sm text-slate-300 leading-relaxed max-w-[92%]">
+        <div className="bg-brand-light-bg dark:bg-brand-bg border border-brand-light-border dark:border-brand-border rounded-xl rounded-tl-sm px-4 py-3 text-sm text-brand-text dark:text-slate-300 leading-relaxed max-w-[92%]">
           I can see standing water blocking the crosswalk. Can you confirm this is near P.S. 147?
         </div>
       </motion.div>
@@ -103,16 +103,16 @@ function ConversationCard() {
         transition={{ delay: 1.1, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
         className="mb-5 flex flex-col items-end"
       >
-        <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">
+        <div className="text-[10px] font-mono text-brand-text-muted dark:text-slate-500 uppercase tracking-widest mb-1.5">
           Resident
         </div>
-        <div className="bg-brand-yellow/10 border border-brand-yellow/20 rounded-xl rounded-tr-sm px-4 py-3 text-sm text-white leading-relaxed max-w-[85%]">
+        <div className="bg-brand-yellow/10 border border-brand-yellow/20 rounded-xl rounded-tr-sm px-4 py-3 text-sm text-brand-text dark:text-white leading-relaxed max-w-[85%]">
           Yes, been here since last night
         </div>
       </motion.div>
 
       {/* Divider */}
-      <div className="border-t border-brand-border mb-4" />
+      <div className="border-t border-brand-light-border dark:border-brand-border mb-4" />
 
       {/* Auto-generated report preview */}
       <motion.div
@@ -120,7 +120,7 @@ function ConversationCard() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       >
-        <div className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3">
+        <div className="text-xs font-mono text-brand-text-muted dark:text-slate-500 uppercase tracking-widest mb-3">
           Auto-generated report
         </div>
         <div className="space-y-2">
@@ -128,9 +128,9 @@ function ConversationCard() {
             <span className="text-xs font-mono text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 rounded-full px-2.5 py-0.5">
               Flooding
             </span>
-            <span className="text-xs text-slate-400">School crossing</span>
+            <span className="text-xs text-brand-text-muted dark:text-slate-400">School crossing</span>
           </div>
-          <div className="text-xs text-slate-500 font-mono">
+          <div className="text-xs text-brand-text-muted dark:text-slate-500 font-mono">
             Greenpoint Ave · P.S. 147
           </div>
           <motion.div
@@ -158,9 +158,9 @@ function ConversationCard() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-brand-bg pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-brand-light-bg dark:bg-brand-bg pt-16">
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-bg via-[#0a1020] to-[#050912]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-light-bg via-[#f0ede6] to-[#e8e4dc] dark:from-brand-bg dark:via-[#0a1020] dark:to-[#050912]" />
 
       {/* Animated grid + signal dots */}
       <LiveSignalGrid />
@@ -193,12 +193,12 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-text dark:text-white leading-[1.1]">
               {SITE.hero.headline}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
+            <p className="text-lg text-brand-text-muted dark:text-slate-400 leading-relaxed max-w-xl">
               {SITE.hero.subtitle}
             </p>
 
