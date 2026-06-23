@@ -21,7 +21,7 @@ const cardVariants = {
 
 export default function ProductSection() {
   return (
-    <Section id="product" className="border-t border-brand-light-border bg-brand-light-bg">
+    <Section id="product" className="border-t border-brand-light-border dark:border-brand-border bg-brand-light-bg dark:bg-brand-bg">
       {/* Section title */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -33,7 +33,7 @@ export default function ProductSection() {
         <p className="text-xs font-mono text-brand-yellow uppercase tracking-widest mb-4">
           Capabilities
         </p>
-        <h2 className="text-3xl lg:text-4xl font-bold text-brand-text max-w-2xl">
+        <h2 className="text-3xl lg:text-4xl font-bold text-brand-text dark:text-white max-w-2xl">
           {SITE.features.sectionTitle}
         </h2>
       </motion.div>
@@ -51,15 +51,15 @@ export default function ProductSection() {
               viewport={{ once: true, margin: '-40px' }}
               variants={cardVariants}
               whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
-              className="group bg-brand-light-surface border border-brand-light-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-default"
+              className="group bg-brand-light-surface dark:bg-brand-surface border border-brand-light-border dark:border-brand-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-default"
             >
               <div className="mb-5">
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-yellow/10 text-brand-yellow group-hover:bg-brand-yellow/20 transition-colors duration-200">
                   <Icon size={18} />
                 </span>
               </div>
-              <h3 className="text-base font-semibold text-brand-text mb-2">{card.title}</h3>
-              <p className="text-sm text-brand-text-muted leading-relaxed">{card.description}</p>
+              <h3 className="text-base font-semibold text-brand-text dark:text-white mb-2">{card.title}</h3>
+              <p className="text-sm text-brand-text-muted dark:text-slate-400 leading-relaxed">{card.description}</p>
             </motion.div>
           )
         })}
