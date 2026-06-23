@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Github } from 'lucide-react'
 import { SITE } from '../content/siteContent'
 import Button from './Button'
 
@@ -50,7 +50,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {SITE.nav.links.map((link) => (
             <a
               key={link.label}
@@ -63,8 +63,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
+        {/* Desktop: GitHub + CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href={SITE.product.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-slate-400 hover:text-white transition-colors duration-150"
+            aria-label="View source on GitHub"
+          >
+            <Github size={18} />
+          </a>
           <Button
             label={SITE.nav.cta.label}
             href={SITE.nav.cta.href}
@@ -105,6 +114,15 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={SITE.product.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                <Github size={15} />
+                GitHub
+              </a>
               <div className="pt-2">
                 <Button
                   label={SITE.nav.cta.label}
