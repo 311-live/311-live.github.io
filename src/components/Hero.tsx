@@ -30,9 +30,7 @@ function LiveSignalGrid() {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none hero-fade-bottom">
-      {/* Fine city-grid lines */}
       <div className="absolute inset-0 hero-grid-bg" />
-      {/* Pulsing signal dots */}
       {dots.map((dot) => (
         <motion.div
           key={dot.id}
@@ -58,36 +56,20 @@ function LiveSignalGrid() {
   )
 }
 
-// ── Dashboard mockup card ──────────────────────────────────────────────────
+// ── AI Conversation card ───────────────────────────────────────────────────
 
-const HERO_LIVE_STATS = [
-  { value: '2,847', label: 'Requests Today' },
-  { value: '23',    label: 'Active Hotspots' },
-  { value: 'Noise / DOB', label: 'Top Category' },
-  { value: '4.2h',  label: 'Avg Response' },
-]
-
-const HERO_CATEGORIES = [
-  { name: 'Noise',      pct: 34, color: '#fff200' },
-  { name: 'Streets',    pct: 21, color: '#22d3ee' },
-  { name: 'Housing',    pct: 18, color: '#94a3b8' },
-  { name: 'Sanitation', pct: 14, color: '#64748b' },
-]
-
-function DashboardCard() {
-  const maxPct = Math.max(...HERO_CATEGORIES.map((c) => c.pct))
-
+function ConversationCard() {
   return (
     <motion.div
       initial={{ opacity: 0, x: 24 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.9, delay: 0.35, ease: 'easeOut' }}
+      transition={{ duration: 0.9, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
       className="relative bg-brand-surface border border-brand-border rounded-2xl p-6 card-glow w-full"
     >
       {/* Card header */}
       <div className="flex items-center justify-between mb-5 pb-4 border-b border-brand-border">
         <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">
-          311-LIVE DASHBOARD
+          311-LIVE · LIVE SESSION
         </span>
         <div className="flex items-center gap-2">
           <motion.span
@@ -99,58 +81,75 @@ function DashboardCard() {
         </div>
       </div>
 
-      {/* Stats grid */}
-      <div className="grid grid-cols-2 gap-x-6 gap-y-5 mb-5">
-        {HERO_LIVE_STATS.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 + i * 0.1, duration: 0.5 }}
-          >
-            <div
-              className={[
-                'text-xl font-bold tracking-tight',
-                i === 1 ? 'text-brand-yellow' : 'text-white',
-              ].join(' ')}
-            >
-              {stat.value}
-            </div>
-            <div className="text-xs text-slate-500 mt-0.5 uppercase tracking-wide font-mono">
-              {stat.label}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+      {/* Agent message */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+        className="mb-4"
+      >
+        <div className="text-[10px] font-mono text-brand-cyan uppercase tracking-widest mb-1.5">
+          Agent
+        </div>
+        <div className="bg-brand-bg border border-brand-border rounded-xl rounded-tl-sm px-4 py-3 text-sm text-slate-300 leading-relaxed max-w-[92%]">
+          I can see standing water blocking the crosswalk. Can you confirm this is near P.S. 147?
+        </div>
+      </motion.div>
+
+      {/* Resident message */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.1, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+        className="mb-5 flex flex-col items-end"
+      >
+        <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">
+          Resident
+        </div>
+        <div className="bg-brand-yellow/10 border border-brand-yellow/20 rounded-xl rounded-tr-sm px-4 py-3 text-sm text-white leading-relaxed max-w-[85%]">
+          Yes, been here since last night
+        </div>
+      </motion.div>
 
       {/* Divider */}
       <div className="border-t border-brand-border mb-4" />
 
-      {/* Category breakdown bars */}
-      <div>
+      {/* Auto-generated report preview */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+      >
         <div className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3">
-          Category Breakdown
+          Auto-generated report
         </div>
-        <div className="space-y-3">
-          {HERO_CATEGORIES.map((cat, i) => (
-            <div key={cat.name}>
-              <div className="flex justify-between text-xs mb-1.5">
-                <span className="text-slate-400">{cat.name}</span>
-                <span className="text-slate-500 font-mono">{cat.pct}%</span>
-              </div>
-              <div className="h-1 bg-brand-border rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full"
-                  style={{ backgroundColor: cat.color }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${(cat.pct / maxPct) * 88}%` }}
-                  transition={{ duration: 1.2, delay: 0.9 + i * 0.15, ease: 'easeOut' }}
-                />
-              </div>
-            </div>
-          ))}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-mono text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 rounded-full px-2.5 py-0.5">
+              Flooding
+            </span>
+            <span className="text-xs text-slate-400">School crossing</span>
+          </div>
+          <div className="text-xs text-slate-500 font-mono">
+            Greenpoint Ave · P.S. 147
+          </div>
+          <motion.div
+            className="flex items-center gap-1.5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.85, duration: 0.4 }}
+          >
+            <motion.span
+              className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <span className="text-xs font-mono text-green-400 uppercase tracking-wider">
+              Ready to submit
+            </span>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }
@@ -182,7 +181,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="space-y-7"
           >
             {/* Eyebrow */}
@@ -217,8 +216,8 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* ── Right: dashboard mockup ── */}
-          <DashboardCard />
+          {/* ── Right: AI conversation card ── */}
+          <ConversationCard />
         </div>
       </div>
     </section>
